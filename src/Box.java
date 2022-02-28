@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Box extends Rectangle {
-    Integer number = 3;
+    Integer number = null;
     int width = 100; int height = 100;
     int x, y;
     boolean Editable = false;

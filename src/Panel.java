@@ -10,18 +10,22 @@ public class Panel extends JScrollPane {
     Block[][] blocks = new Block[3][3];
     boolean mouseClicked = false;
     double Mx, My;
+    int bx,by,gx,gy;
+    boolean firstTime = true;
     KeyListener Kl = new KeyListener() {
         @Override
         public void keyTyped(KeyEvent e) {
-            
+            if (mouseClicked&&blocks[bx][by].grid[gx][gy].Editable){
+                blocks[bx][by].grid[gx][gy].number = Character.getNumericValue(e.getKeyChar());
+                System.out.println(blocks[bx][by].grid[gx][gy].number);
+                repaint();
+            }
+
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if (mouseClicked&&blocks[(int) Math.floor(Mx / 300)][(int) Math.floor(My / 300)].grid[(int) Math.floor(Mx / 100) - ((int) Math.floor(Mx / 300) * 3)][(int) Math.floor(My / 100) - ((int) Math.floor(Mx / 300) * 3)].Editable){
-                blocks[(int) Math.floor(Mx/300)][(int) Math.floor(My/300)].grid[(int) Math.floor(Mx/100)-((int) Math.floor(Mx/300)*3)][(int) Math.floor(My/100)-((int) Math.floor(Mx/300)*3)].number = Character.getNumericValue(e.getKeyChar());
-            }
-            repaint();
+
         }
 
         @Override
@@ -35,12 +39,12 @@ public class Panel extends JScrollPane {
             mouseClicked = true;
             Mx = e.getX();
             My = e.getY();
-            int bx = (int) Math.floor(Mx/300);
-            int by = (int) Math.floor(My/300);
-            int gx = (int) Math.floor(Mx/100)-(bx*3);
-            int gy = (int) Math.floor(My/100) -(by*3);
+             bx = (int) Math.floor(Mx/300);
+             by = (int) Math.floor(My/300);
+             gx = (int) Math.floor(Mx/100)-(bx*3);
+             gy = (int) Math.floor(My/100) -(by*3);
             blocks[bx][by].grid[gx][gy].Editable = true;
-            System.out.println("never gonna give you up");
+            System.out.println("index: (" + gx + "," + gy + ")" + " Editable = " +  blocks[bx][by].grid[gx][gy].Editable);
         }
 
         @Override
@@ -79,7 +83,9 @@ public class Panel extends JScrollPane {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D gtd = (Graphics2D) g;
+        if (firstTime)
         setBlock(blocks);
+    firstTime = false;
         drawBlock(blocks, gtd);
     }
     
