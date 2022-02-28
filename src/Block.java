@@ -32,7 +32,7 @@ public class Block extends Rectangle {
      * @param gtd the Graphics2D needed to draw the block and the 3x3 grid inside it
      */
     public void draw(Graphics2D gtd){
-        gtd.setStroke(new BasicStroke(2));
+        gtd.setStroke(new BasicStroke(5));
         gtd.draw(this);
         gtd.setStroke(new BasicStroke(1));
         setBox(grid);
@@ -66,4 +66,4 @@ public class Block extends Rectangle {
         }
     }
 
-}
+    }

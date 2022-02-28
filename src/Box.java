@@ -4,6 +4,7 @@ public class Box extends Rectangle {
     Integer number = 3;
     int width = 100; int height = 100;
     int x, y;
+    boolean Editable = false;
 
     /**
      * This is the constructor for the Box class.
@@ -25,7 +26,7 @@ public class Box extends Rectangle {
         gtd.draw(this);
         //Only display number in square if number is not null(number has a specific value)
         if (number!= null) {
-            gtd.drawString(number.toString(), (int) (this.getY() + this.getWidth() / 3), (int) (this.getY() + this.getHeight() / 3));
+            gtd.drawString(number.toString(), (int) (this.getX() + this.getWidth() / 2), (int) (this.getY() + this.getHeight() / 2));
         }
     }
 

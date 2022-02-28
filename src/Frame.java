@@ -1,10 +1,11 @@
 import javax.swing.*;
 
 public class Frame extends JFrame {
-    public Frame(int width, int height){
-        this.setSize(width, height);
+    public Frame(){
+        this.setResizable(false);
+        this.setExtendedState(6);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
 
