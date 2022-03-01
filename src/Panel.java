@@ -83,10 +83,10 @@ public class Panel extends JScrollPane {
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D gtd = (Graphics2D) g;
-        if (firstTime)
+            if (firstTime)
         setBlock(blocks);
-    firstTime = false;
-        drawBlock(blocks, gtd);
+        drawBlock(blocks, gtd, firstTime);
+        firstTime = false;
     }
     
 
@@ -96,11 +96,11 @@ public class Panel extends JScrollPane {
      * @param gtd Graphics2D object, this is needed to draw the squares on the screen
      */
 
-    public void drawBlock(Block [][] blocks, Graphics2D gtd){
+    public void drawBlock(Block [][] blocks, Graphics2D gtd, boolean firstTime){
         for (int i = 0; i <3; i++) {
             for (int j = 0; j <3; j++) {
                 gtd.setColor(Color.white);
-                blocks[i][j].draw(gtd);
+                blocks[i][j].draw(gtd, firstTime);
             }
         }
     }

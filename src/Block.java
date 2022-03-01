@@ -31,10 +31,11 @@ public class Block extends Rectangle {
      * this will draw the block, and the 3x3 grid inside it,this will be called by the paint function in Panel.java
      * @param gtd the Graphics2D needed to draw the block and the 3x3 grid inside it
      */
-    public void draw(Graphics2D gtd){
+    public void draw(Graphics2D gtd, boolean temp){
         gtd.setStroke(new BasicStroke(5));
         gtd.draw(this);
         gtd.setStroke(new BasicStroke(1));
+        if (temp)
         setBox(grid);
         drawBox(grid, gtd);
     }
