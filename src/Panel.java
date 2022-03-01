@@ -15,8 +15,11 @@ public class Panel extends JScrollPane {
     KeyListener Kl = new KeyListener() {
         @Override
         public void keyTyped(KeyEvent e) {
+            //check if the block is editable
             if (mouseClicked&&blocks[bx][by].grid[gx][gy].Editable){
-                blocks[bx][by].grid[gx][gy].number = Character.getNumericValue(e.getKeyChar());
+                if((Character.getNumericValue(e.getKeyChar()))<10){
+
+                blocks[bx][by].grid[gx][gy].number = Character.getNumericValue(e.getKeyChar());}
                 System.out.println(blocks[bx][by].grid[gx][gy].number);
                 repaint();
             }
